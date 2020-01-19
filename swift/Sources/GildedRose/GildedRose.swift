@@ -1,6 +1,8 @@
 public class GildedRose {
     var items:[Item]
     
+    let sulfuras = "Sulfuras, Hand of Ragnaros"
+    
     public init(items:[Item]) {
         self.items = items
     }
@@ -12,11 +14,9 @@ public class GildedRose {
     }
     
     fileprivate func applyBaseQualityAdjustments(_ item: Item) {
-        if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" {
+        if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" && item.name != "Sulfuras, Hand of Ragnaros" {
             if item.quality > 0 {
-                if item.name != "Sulfuras, Hand of Ragnaros" {
                     item.quality -= 1
-                }
             }
         } else {
             if item.quality < 50 {
@@ -61,10 +61,14 @@ public class GildedRose {
     
     public func adjustValues() {
         for item in items {
-            applyBaseQualityAdjustments(item)
-            decreaseSellIn(item)
-            applyQualityAdjustmentsForNegativeSellin(item)
-
+            switch item.name {
+            case sulfuras:
+                Sulfuras().updateValues()
+            default:
+                applyBaseQualityAdjustments(item)
+                decreaseSellIn(item)
+                applyQualityAdjustmentsForNegativeSellin(item)
+            }
         }
 
     }
