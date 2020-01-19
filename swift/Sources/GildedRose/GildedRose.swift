@@ -22,6 +22,5 @@ public class GildedRose {
                 StandardItem().updateValues(item: item)
             }
         }
-
     }
 }
