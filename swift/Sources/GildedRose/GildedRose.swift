@@ -5,7 +5,7 @@ public class GildedRose {
         self.items = items
     }
     
-    public func updateQuality() {
+    public func adjustValues() {
         for item in items {
             if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" {
                 if item.quality > 0 {
@@ -36,6 +36,7 @@ public class GildedRose {
             if item.name != "Sulfuras, Hand of Ragnaros" {
                 item.sellIn -= 1
             }
+        
             
             if item.sellIn < 0 {
                 if item.name != "Aged Brie" {
@@ -54,6 +55,8 @@ public class GildedRose {
                     }
                 }
             }
+
         }
+
     }
 }
