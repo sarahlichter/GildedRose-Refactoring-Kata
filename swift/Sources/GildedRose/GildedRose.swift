@@ -2,6 +2,7 @@ public class GildedRose {
     var items:[Item]
     
     let sulfuras = "Sulfuras, Hand of Ragnaros"
+    let backstagePass = "Backstage passes to a TAFKAL80ETC concert"
     
     public init(items:[Item]) {
         self.items = items
@@ -12,7 +13,7 @@ public class GildedRose {
     }
     
     fileprivate func applyBaseQualityAdjustments(_ item: Item) {
-        if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" {
+        if item.name != "Aged Brie" && item.name != backstagePass {
             if item.quality > 0 {
                     item.quality -= 1
             }
@@ -20,7 +21,7 @@ public class GildedRose {
             if item.quality < 50 {
                 item.quality += 1
                 
-                if item.name == "Backstage passes to a TAFKAL80ETC concert" {
+                if item.name == backstagePass {
                     if item.sellIn < 11 {
                         if item.quality < 50 {
                             item.quality += 1
@@ -40,7 +41,7 @@ public class GildedRose {
     fileprivate func applyQualityAdjustmentsForNegativeSellin(_ item: Item) {
         if item.sellIn < 0 {
             if item.name != "Aged Brie" {
-                if item.name == "Backstage passes to a TAFKAL80ETC concert" {
+                if item.name == backstagePass {
                     item.quality = item.quality - item.quality
                 } else {
                     if item.quality > 0 {
@@ -59,7 +60,9 @@ public class GildedRose {
         for item in items {
             switch item.name {
             case sulfuras:
-                Sulfuras().updateValues()
+                Sulfuras().updateValues(item: item)
+            case backstagePass:
+                BackstagePass().updateValues(item: item)
             default:
                 applyBaseQualityAdjustments(item)
                 decreaseSellIn(item)
