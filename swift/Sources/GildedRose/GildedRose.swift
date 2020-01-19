@@ -13,27 +13,13 @@ public class GildedRose {
     }
     
     fileprivate func applyBaseQualityAdjustments(_ item: Item) {
-        if item.name != "Aged Brie" && item.name != backstagePass {
+        if item.name != "Aged Brie" {
             if item.quality > 0 {
                     item.quality -= 1
             }
         } else {
             if item.quality < 50 {
                 item.quality += 1
-                
-                if item.name == backstagePass {
-                    if item.sellIn < 11 {
-                        if item.quality < 50 {
-                            item.quality += 1
-                        }
-                    }
-                    
-                    if item.sellIn < 6 {
-                        if item.quality < 50 {
-                            item.quality += 1
-                        }
-                    }
-                }
             }
         }
     }
@@ -41,12 +27,8 @@ public class GildedRose {
     fileprivate func applyQualityAdjustmentsForNegativeSellin(_ item: Item) {
         if item.sellIn < 0 {
             if item.name != "Aged Brie" {
-                if item.name == backstagePass {
-                    item.quality = item.quality - item.quality
-                } else {
-                    if item.quality > 0 {
-                        item.quality -= 1
-                    }
+                if item.quality > 0 {
+                    item.quality -= 1
                 }
             } else {
                 if item.quality < 50 {
