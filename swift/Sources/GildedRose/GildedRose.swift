@@ -14,29 +14,17 @@ public class GildedRose {
     }
     
     fileprivate func applyBaseQualityAdjustments(_ item: Item) {
-        if item.name == brie {
-            if item.quality < 50 {
-                item.quality += 1
-            }
-        } else {
-            if item.quality > 0 {
-                item.quality -= 1
-            }
+        if item.quality > 0 {
+            item.quality -= 1
         }
     }
     
     fileprivate func applyQualityAdjustmentsForNegativeSellin(_ item: Item) {
         if item.sellIn < 0 {
-            if item.name == brie {
-                if item.quality < 50 {
-                    item.quality += 1
-                }
-            } else {
-
-                if item.quality > 0 {
-                    item.quality -= 1
-                }
+            if item.quality > 0 {
+                item.quality -= 1
             }
+
         }
     }
     
