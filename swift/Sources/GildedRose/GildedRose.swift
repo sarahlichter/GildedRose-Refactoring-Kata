@@ -47,6 +47,8 @@ public class GildedRose {
                 Sulfuras().updateValues(item: item)
             case backstagePass:
                 BackstagePass().updateValues(item: item)
+            case brie:
+                Brie().updateValues(item: item)
             default:
                 applyBaseQualityAdjustments(item)
                 decreaseSellIn(item)
