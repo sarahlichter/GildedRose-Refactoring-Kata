@@ -10,13 +10,10 @@ import Foundation
 class Brie: GildedItem {
     func updateValues(item: Item) {
         if item.quality < 50 {
-            item.quality += 1
+            let increase = item.sellIn < 0 ? 2 : 1
+            item.quality += increase
         }
         item.sellIn -= 1
-        if item.sellIn < 0 {
-            if item.quality < 50 {
-                item.quality += 1
-            }
-        }
+
     }
 }
