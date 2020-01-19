@@ -8,13 +8,11 @@ public class GildedRose {
     }
     
     fileprivate func decreaseSellIn(_ item: Item) {
-        if item.name != "Sulfuras, Hand of Ragnaros" {
-            item.sellIn -= 1
-        }
+        item.sellIn -= 1
     }
     
     fileprivate func applyBaseQualityAdjustments(_ item: Item) {
-        if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" && item.name != "Sulfuras, Hand of Ragnaros" {
+        if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" {
             if item.quality > 0 {
                     item.quality -= 1
             }
@@ -44,9 +42,7 @@ public class GildedRose {
             if item.name != "Aged Brie" {
                 if item.name != "Backstage passes to a TAFKAL80ETC concert" {
                     if item.quality > 0 {
-                        if item.name != "Sulfuras, Hand of Ragnaros" {
-                            item.quality -= 1
-                        }
+                        item.quality -= 1
                     }
                 } else {
                     item.quality = item.quality - item.quality
