@@ -38,9 +38,7 @@ public class GildedRose {
             case brie:
                 Brie().updateValues(item: item)
             default:
-                applyBaseQualityAdjustments(item)
-                decreaseSellIn(item)
-                applyQualityAdjustmentsForNegativeSellin(item)
+                StandardItem().updateValues(item: item)
             }
         }
 
